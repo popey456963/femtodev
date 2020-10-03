@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Blogging with Hugo &amp; Travis CI :: Femto Blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="I recently had the good fortune of being asked to work on a project with Finnian Anderson and Ben James, the idea was rather a simple one, just requiring a blog to setup. One of our concerns though was that all of us had done devops before and weren&amp;rsquo;t particuarly keen to do it again, thus we needed a blog that had as little overhead as possible in terms of setup and maintenance time but still was fast to load and easy to use." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/post/blogging-with-hugo-and-travis/" />
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css">
+
+  <link rel="stylesheet" href="/assets/red.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/img/favicon/red.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:creator" content="" />
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Blogging with Hugo &amp; Travis CI :: Femto Blog">
+<meta property="og:description" content="I recently had the good fortune of being asked to work on a project with Finnian Anderson and Ben James, the idea was rather a simple one, just requiring a blog to setup. One of our concerns though was that all of us had done devops before and weren&amp;rsquo;t particuarly keen to do it again, thus we needed a blog that had as little overhead as possible in terms of setup and maintenance time but still was fast to load and easy to use." />
+<meta property="og:url" content="/post/blogging-with-hugo-and-travis/" />
+<meta property="og:site_name" content="Blogging with Hugo &amp; Travis CI" />
+
+  
+    <meta property="og:image" content="/img/favicon/red.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+  <meta property="article:section" content="Bash" />
+
+  <meta property="article:section" content="Linux" />
+
+
+  <meta property="article:published_time" content="2018-01-12 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Femto Blog
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/showcase">Showcase</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/showcase">Showcase</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="/post/blogging-with-hugo-and-travis/">Blogging with Hugo &amp; Travis CI</a></h1>
+  <div class="post-meta">
+      
+    <span class="post-date">
+      2018-01-12
+    </span>
+    
+    
+  </div>
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I recently had the good fortune of being asked to work on a project with <a href="https://finnian.io/">Finnian Anderson</a> and <a href="https://benjames.io/">Ben James</a>, the idea was rather a simple one, just requiring a blog to setup.  One of our concerns though was that all of us had done devops before and weren&rsquo;t particuarly keen to do it again, thus we needed a blog that had as little overhead as possible in terms of setup and maintenance time but still was fast to load and easy to use.  We&rsquo;re also don&rsquo;t have lots of money to waste on a side project, so it had to be as close to free as we could get it.</p>
+<p>Our initial thought was <a href="http://medium.com/">Medium</a>, however that turned out to not be feasible since they <a href="https://help.medium.com/hc/en-us/articles/115005579728-Custom-domains-on-Medium">stopped offering custom domains</a> a few months back.  This walls us in to their service, detracts from our image and discouraged us from using the service.</p>
+<p>Hugo has been gaining popularity recently and I had an hour to spare, so we thought we&rsquo;d try something new.  Unfortunately, a large proportion of guides on this subject seem out of date, hence the creation of this post.</p>
+<h3 id="the-plan">The Plan<a href="#the-plan" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>+------+       +----------+
+|      |       |          |
+| USER | +---&gt; | GH Pages | &lt;-------------+
+|      |       |          |               |
++------+       +----------+               +
+
++--------+       +----------+       +-----------+       +------+
+|        |       |          |       |           |       |      |
+| WRITER | +---&gt; | Git Repo | +---&gt; | Travis CI | &lt;---&gt; | Hugo |
+|        |       |          |       |           |       |      |
++--------+       +----------+       +-----------+       +------+
+</code></pre><p>As you can see from the flowchart above, the plan is to let Travis compile a selection of markdown files using Hugo when it detects a change in the Git repository. Travis can then use it&rsquo;s inbuilt &ldquo;publish&rdquo; module to then change the github pages content.</p>
+<h3 id="github">Github<a href="#github" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Although we will add data to the repository later, there are some initial items that need to be setup within Github:</p>
+<ol>
+<li>Generate a new <a href="https://github.com/settings/tokens">Personal Access Token</a> from Github.  This will be used by Travis to push the changes to Github, so it will need access to the <code>repo</code> scope.</li>
+<li>Create a branch called <code>gh-pages</code>.  You can do this via the GUI on the main repository page like so:</li>
+</ol>
+<p><img src="https://puu.sh/yZQYO/210fe701a8.png" alt=""></p>
+<ol start="3">
+<li>If you so desire, you can setup a custom domain name for your repository by entering it at <code>https://github.com/:[user]/:[repo]/settings</code>.</li>
+<li>On the same page, setup the &ldquo;Source&rdquo; for GitHub Pages to be the &ldquo;gh-pages&rdquo; branch.</li>
+</ol>
+<h3 id="hugo">Hugo<a href="#hugo" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Hugo itself seems exceptionally easy to use, for the purpose of this blog post our layout will follow the layout specific by the <a href="https://github.com/gohugoio/hugoBasicExample">Hugo example</a>.  This blog assumes that the output folder is set to <code>docs</code>, if any other folder name is selected it simply involves altering the two occurances of <code>docs</code> within the <code>.travis.yml</code> file.</p>
+<pre><code>repo.
+│   config.toml
+│
+├───content
+│   │   about.md
+│   │
+│   └───post
+│           creating-a-new-theme.md
+│           goisforlovers.md
+│           hugoisforlovers.md
+│           migrate-from-jekyll.md
+│
+├───layouts
+│
+└───static
+</code></pre><blockquote>
+<p>It&rsquo;s wise to check out your <code>config.toml</code> and alter the settings to your personal needs.  Of special note is that &ldquo;baseurl&rdquo; is often set in a number of example projects.  If your project is running from the root of a domain or sub-domain, it appears safe to leave this blank</p>
+</blockquote>
+<p>Once you have setup the initial blog layout to your liking, you must also create another file called <code>.nojekyll</code> with no content.  This will tell Github that we are, in fact, not using jekyll and instead using our own platform.</p>
+<h3 id="travis-ci">Travis CI<a href="#travis-ci" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The final step is to get your blog compiled.  Login to Travis and visit your profile <a href="https://travis-ci.org/profile">here</a>.  Scroll down the list of repositories and enable it for your blog repository.</p>
+<blockquote>
+<p>You may need to press the &ldquo;Sync account&rdquo; button in the top-right to inform Travis you&rsquo;ve created a new repository.  This can take a few minutes, maybe grab a coffee or do some exercise?</p>
+</blockquote>
+<p>Once you have enabled it, you will need to add a <code>.travis.yml</code> file to your repository.  This lets Travis know what to do to run your project.  Our setup is fairly simple, here is the file I use:</p>
+<pre><code># Install the apt prerequisites
+addons:
+  apt:
+    packages:
+      - python-pygments
+      
+before_install:
+  - wget https://github.com/gohugoio/hugo/releases/download/v0.32.3/hugo_0.32.3_Linux-32bit.deb
+  - sudo dpkg -i hugo_0.32.3_Linux-32bit.deb
+  - rm hugo_0.32.3_Linux-32bit.deb
+  
+# Clean and don't fail
+install:
+  - rm -rf docs || exit 0
+
+# Build the website
+script:
+  - hugo
+
+# Deploy to GitHub pages
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: &quot;${TRAVIS_BUILD_DIR}/docs&quot;
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
+</code></pre><p>Splitting this up into sections:</p>
+<ul>
+<li><strong>addons</strong>: Any initial packages to be installed, here we use the <code>python-pygments</code> library to add code highlighting.</li>
+<li><strong>before_install</strong>: Install Hugo using <code>dpkg</code>.  It might be suggested to grab the latest version from <a href="https://github.com/gohugoio/hugo/releases">here</a>.</li>
+<li><strong>install</strong>: Remove any existing blog content, if <code>docs</code> does not exist it will error out, the <code>|| exit 0</code> section will catch that error so that it does not break the build.</li>
+<li><strong>script</strong>: Run the <code>hugo</code> command, add any arguments you wish to compile with here, as well as other scripts you wish to run before <code>hugo</code>.</li>
+<li><strong>deploy</strong>: Copy the <code>docs</code> folder to the <code>gh-pages</code> branch of Github if the current branch is the <code>master</code> branch (to stop a loop).</li>
+</ul>
+<p>You will notice a <code>$GITHUB_TOKEN</code> reference in the deployment section, this is the <code>Personal Access Token</code> we saved earlier.  To add this securely to the build, we use Travis environment variables at <code>https://travis-ci.org/:[user]/:[repo]/settings</code>.  Just add a field with the name of <code>GITHUB_TOKEN</code> and a value of the token.  Note that this does not automatically save, you will need to click the <code>add</code> button on the far right.</p>
+<p>Once this is done you should be able to add any content you wish to the blog and see it automatically shown at either the custom domain you defined, or <code>:[user].github.com/:[repo]/</code>.</p>
+<h3 id="finishing-up">Finishing Up<a href="#finishing-up" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Overall this experiment was a great success.  The entire system took barely any time to setup and all the different tools worked exceptionally well together.  The one drawback I&rsquo;ve noticed so far with Hugo is that error messages are sometimes fairly cryptic, however it catches a lot of common mistakes I made when altering the configuration file and so those errors are rare to see.</p>
+<p>Another advantage of this design is that every element is easily replaceable.  There are dozens of Git repositories that offer hosting services similar to Github pages, hundreds of continuous integration services and thousands of blogging software out there.  The only issue I forsee is that project layouts differ a lot, so some reorganisation might be necessary.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="/post/changing-swap-size/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Changing Swap Size in Ubuntu</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="/post/setting-up-a-url-shortener/">
+                <span class="button__text">Setting Up A URL Shortener</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>© Codefined 2020</span>
+    
+            <span>:: <a href="https://github.com/popey456963">GitHub</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

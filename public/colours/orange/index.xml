@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Femto Blog</title>
+    <link>/</link>
+    <description>Recent content on Femto Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <copyright>© Codefined</copyright>
+    <lastBuildDate>Fri, 08 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Changing Swap Size in Ubuntu</title>
+      <link>/post/changing-swap-size/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/changing-swap-size/</guid>
+      <description>When your server runs out of memory, one of two things generally happens:
+ The out of memory killer comes along and kills processes. Your system uses swap as a form of slower memory.  Swap is simply putting pages of memory from your RAM into a file / partition to increase the capacity of it.
+You can find the amount of swap you have free by running:
+free -h To change it, you need to disable your existing swap and resize it:</description>
+    </item>
+    
+    <item>
+      <title>Showcase</title>
+      <link>/showcase/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/showcase/</guid>
+      <description>Femto Uploader Femto Uploader is a simple to use file sharing service that allows you to share files for free, instantly, from anywhere. It&amp;rsquo;s seen millions of users and transferred over 10 petabytes of data. live
+  Shortener subr.pw is a tool to shorten URLs. It&amp;rsquo;s UI features just a single input box to enter in a URL and it almost instantly converts it into a shorter link. live source</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Thu, 07 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Hi there This is a blog.</description>
+    </item>
+    
+    <item>
+      <title>Blogging with Hugo &amp; Travis CI</title>
+      <link>/post/blogging-with-hugo-and-travis/</link>
+      <pubDate>Fri, 12 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/blogging-with-hugo-and-travis/</guid>
+      <description>I recently had the good fortune of being asked to work on a project with Finnian Anderson and Ben James, the idea was rather a simple one, just requiring a blog to setup. One of our concerns though was that all of us had done devops before and weren&amp;rsquo;t particuarly keen to do it again, thus we needed a blog that had as little overhead as possible in terms of setup and maintenance time but still was fast to load and easy to use.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up A URL Shortener</title>
+      <link>/post/setting-up-a-url-shortener/</link>
+      <pubDate>Sat, 27 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/setting-up-a-url-shortener/</guid>
+      <description>I admit it, yesterday, I built yet another URL shortener with some friends of mine from Subject Refresh. Despite most URL shorteners being detrimental to society, with them disappearing and taking massive sections of the internet with them, we thought we&amp;rsquo;d add yet another one to see how well our team worked together.
+We managed to buy the domain, setup the server and host our website in under an hour. This shocked us as we had never done anything in such a short timeframe before.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Setting Up A URL Shortener :: Femto Blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="I admit it, yesterday, I built yet another URL shortener with some friends of mine from Subject Refresh. Despite most URL shorteners being detrimental to society, with them disappearing and taking massive sections of the internet with them, we thought we&amp;rsquo;d add yet another one to see how well our team worked together.
+We managed to buy the domain, setup the server and host our website in under an hour. This shocked us as we had never done anything in such a short timeframe before." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/post/setting_up_a_url_shortener/" />
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css">
+
+  <link rel="stylesheet" href="/assets/red.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/img/favicon/red.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:creator" content="" />
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Setting Up A URL Shortener :: Femto Blog">
+<meta property="og:description" content="I admit it, yesterday, I built yet another URL shortener with some friends of mine from Subject Refresh. Despite most URL shorteners being detrimental to society, with them disappearing and taking massive sections of the internet with them, we thought we&amp;rsquo;d add yet another one to see how well our team worked together.
+We managed to buy the domain, setup the server and host our website in under an hour. This shocked us as we had never done anything in such a short timeframe before." />
+<meta property="og:url" content="/post/setting_up_a_url_shortener/" />
+<meta property="og:site_name" content="Setting Up A URL Shortener" />
+
+  
+    <meta property="og:image" content="/img/favicon/red.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+  <meta property="article:section" content="Node.JS" />
+
+  <meta property="article:section" content="JavaScript" />
+
+  <meta property="article:section" content="Project" />
+
+
+  <meta property="article:published_time" content="2016-02-27 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Femto Blog
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/showcase">Showcase</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/showcase">Showcase</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="/post/setting_up_a_url_shortener/">Setting Up A URL Shortener</a></h1>
+  <div class="post-meta">
+      
+    <span class="post-date">
+      2016-02-27
+    </span>
+    
+    
+  </div>
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I admit it, yesterday, I built yet another URL shortener with some friends of mine from <a href="http://subjectrefresh.info">Subject Refresh</a>.  Despite most URL shorteners being detrimental to society, with them disappearing and <a href="http://archiveteam.org/index.php?title=URLTeam#Dead_or_Broken">taking massive sections of the internet</a> with them, we thought we&rsquo;d add <a href="http://subr.pw">yet another one</a> to see how well our team worked together.</p>
+<p>We managed to buy the domain, setup the server and host our website in <em>under an hour</em>.  This shocked us as we had never done anything in such a short timeframe before.  We seperated jobs as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Team Member</th>
+<th>Main Job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://milesbudden.com">Miles Budden</a></td>
+<td>Setting up the domain name.</td>
+</tr>
+<tr>
+<td><a href="http://finnian.io/">Finnian Anderson</a></td>
+<td>Setting up the server and connecting the back and front end.</td>
+</tr>
+<tr>
+<td><a href="http://popey456963.github.io">Alexander Craggs</a></td>
+<td>Building the URL shortener backend.</td>
+</tr>
+</tbody>
+</table>
+<p>Unfortunately, half of our team wasn&rsquo;t around, so we had to all pile in with jobs that we&rsquo;d never done before.  It meant we learnt a lot about what other members of our team did and was a great experience.</p>
+<h4 id="domain-setup"><strong>Domain Setup</strong><a href="#domain-setup" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>The first decision when getting a domain is, of course, choosing the name.  There are <a href="http://www.panabee.com/">so</a> <a href="http://www.leandomainsearch.com/">many</a> <a href="http://www.nameboy.com/">domain</a> <a href="http://www.bustaname.com/word_maker">name</a> <a href="http://www.domainhole.com/generator/">choosers</a> out there that it can be intimidating to get help, but I have to say I recommend using <a href="http://www.namemesh.com/">Name Mesh</a>, it has a nice design and assuming you already have a brand name, does a really nice job.  In the end, it gave us the domain name of &ldquo;<a href="http://subr.pw">Subr.pw</a>&quot;, which we liked a lot, mainly because:</p>
+<ul>
+<li>It was short, with only six characters.  As we were going to use this for a URL shortening service, it had to be small.</li>
+<li>It didnt cost very much.  It was 60p for an entire year, which didn&rsquo;t put a dent in our tiny pile of funds.</li>
+<li>It was related to Subject Refresh and could be seen to have similarities.  You don&rsquo;t want to dillute your brand with severely different domain names.</li>
+</ul>
+<p>We actually bought our domain name from <a href="http://namecheap.com">Namecheap</a>, mostly because their customer service is incredible.  They always respond to our tickets within hours and when compared to companies like <a href="http://godaddy.com">GoDaddy</a>, they&rsquo;re better in just about every way.  On that note, we recommend you don&rsquo;t go with GoDaddy, although their prices are great, if you have <em>any</em> problem with their service you are not going to get any help from them.  We had tickets open for weeks with no reply, which was why we swapped to a better domain name provider.</p>
+<h4 id="server-configuration"><strong>Server Configuration</strong><a href="#server-configuration" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>We already have a server that we use for a lot of <a href="http://subjectrefresh.info">Subject Refresh&rsquo;s</a> projects.  As we&rsquo;re on rather a tight budget, we went with <a href="https://aws.amazon.com/websites/">Amazon Web Services</a> as they provide an unbeatable price for the services they provide.  They also provide a surprisingly useful trial service, which allows you to get to grips with their tools.</p>
+<h4 id="the-back-end"><strong>The Back End</strong><a href="#the-back-end" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Our backend is built on MongoDB, Node.JS and Socket.IO to communicate with the frontend.  We used the tremendous <a href="https://www.npmjs.com/package/short"><code>short</code></a> NPM package to handle the creation and retrieval of the shortened URLs.  Although it&rsquo;s basically a glorified hash store package, it served our purpose well and it has a great syntax that makes it really easy to use.  We originally planned to use <a href="https://www.npmjs.com/package/url-shorten"><code>URL-Shorten</code></a>, however that turned out to have too many pre-requisites and would increase our server load substantially.</p>
+<p>The general premise of the <a href="https://www.npmjs.com/package/short"><code>short</code></a> is that you generate a short URL, you wait until it&rsquo;s finished generating and then you retrieve the shortened URL from the object it returns.  The simplest example is as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Require the Library
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">shortURLPromise</span>, <span style="color:#66d9ef">short</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;short&#39;</span>)
+
+<span style="color:#75715e">// Connect to MongoDB
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">short</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#e6db74">&#39;mongodb://localhost/shortener&#39;</span>)
+
+<span style="color:#75715e">// Generate a Shortened URL
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">shortURLPromise</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">short</span>.<span style="color:#a6e22e">generate</span>({
+  <span style="color:#a6e22e">URL</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://nodejs.org/&#34;</span>
+})
+
+<span style="color:#75715e">// On Generation, Get the Shortened URL
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">shortURLPromise</span>.<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">mongodbDoc</span>) {
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">mongodbDoc</span>)
+})
+</code></pre></div><p>Which will return something that looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{ <span style="color:#66d9ef">URL</span>: <span style="color:#e6db74">&#39;http://nodejs.org/&#39;</span>,
+  <span style="color:#66d9ef">data</span>: <span style="color:#66d9ef">null</span>,
+  <span style="color:#66d9ef">hash</span>: <span style="color:#e6db74">&#39;292c7c&#39;</span>,
+  <span style="color:#66d9ef">_id</span>: 56d1a8cd1298b7842cb1ff1e,
+  <span style="color:#66d9ef">created_at</span>: Sat Feb <span style="color:#ae81ff">27</span> <span style="color:#ae81ff">2016</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">46</span>:<span style="color:#ae81ff">53</span> GMT<span style="color:#ae81ff">+0000</span> (GMT Standard Time),
+  <span style="color:#66d9ef">hits</span>: <span style="color:#ae81ff">0</span> }
+</code></pre></div><p>This is look very hopeful, it gives us a URL, a hash for the shortened version, a date that it was created on and the number of times it has been requested.  However, we don&rsquo;t want to just access it from the command line, so we&rsquo;re going to have to put some wrapping code around that to communicate between the frontend and the backend.  Enter Socket.IO and Express.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Require Express and Socket.IO
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>).<span style="color:#a6e22e">Server</span>(<span style="color:#a6e22e">app</span>);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">io</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;socket.io&#39;</span>)(<span style="color:#a6e22e">http</span>);
+
+<span style="color:#75715e">// Set the baseURL of the Project
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">baseURL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://subr.pw/&#34;</span>;
+<span style="color:#75715e">// A Regular Expression to Catch URLs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">urlRegExp</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/^((ht|f)tps?:\/\/|)[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s&lt;&gt;\#%&#34;\,\{\}\\|\\\^\[\]`]+)?$/</span>;
+
+<span style="color:#75715e">// A Wrapper Function for Retrieval from Short
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">lookup</span>(<span style="color:#66d9ef">long</span>, <span style="color:#a6e22e">callback</span>) {
+  <span style="color:#66d9ef">short</span>.<span style="color:#a6e22e">retrieve</span>(<span style="color:#66d9ef">long</span>).<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">result</span>) {
+    <span style="color:#a6e22e">callback</span>(<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">URL</span>);
+  });
+}
+
+<span style="color:#75715e">// Set &#34;/static&#34; to be Public
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#a6e22e">express</span>.<span style="color:#66d9ef">static</span>(<span style="color:#a6e22e">__dirname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/static&#34;</span>));
+
+<span style="color:#75715e">// Setup Redirection from Short URLs
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/:short&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+  <span style="color:#a6e22e">lookup</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">params</span>.<span style="color:#66d9ef">short</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">redirect</span>) {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Long: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">redirect</span>);
+    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">redirect</span>(<span style="color:#e6db74">&#39;http://&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">redirect</span>);
+  });
+});
+
+<span style="color:#75715e">// Homepage of the Website
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">sendFile</span>(<span style="color:#a6e22e">__dirname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/index.html&#39;</span>);
+});
+
+<span style="color:#75715e">// Socket.IO Connection
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;connection&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">socket</span>) {
+  <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">url</span>) {
+    <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;http://&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;https://&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>);
+
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;subr.pw&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">url</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">urlRegExp</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">url</span>)) {
+      <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#34;e&#34;</span>, {
+        <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Invalid URL&#34;</span>
+      });
+    } <span style="color:#66d9ef">else</span> {
+      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">shortURLPromise</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">short</span>.<span style="color:#a6e22e">generate</span>({
+        <span style="color:#a6e22e">URL</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">url</span>
+      });
+
+      <span style="color:#a6e22e">shortURLPromise</span>.<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">mongo_doc</span>) {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;[Shortener] Converted &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">mongo_doc</span>.<span style="color:#a6e22e">URL</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; to &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">baseURL</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">mongo_doc</span>.<span style="color:#a6e22e">hash</span>);
+        <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;short&#39;</span>, <span style="color:#a6e22e">baseURL</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">mongo_doc</span>.<span style="color:#a6e22e">hash</span>);
+      });
+    }
+  });
+});
+
+<span style="color:#75715e">// Listen on Port 3004
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3004</span>, <span style="color:#66d9ef">function</span>() {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;[Shortener] listening on *:3004&#39;</span>)
+});
+</code></pre></div><p>And thus, with the communication and URL shortening side done, we need to move onto prettier things.</p>
+<h4 id="front-end"><strong>Front End</strong><a href="#front-end" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Our front-end was our most contentious point.  None of our team are particuarly good at it, we mostly use frameworks like Materialize or Skeleton.  However, this doesn&rsquo;t mean we can&rsquo;t argue about which one of these to use.  We had the following options:</p>
+<ul>
+<li><em><a href="http://materializecss.com/">Materialize</a></em> is a versatile Material Design framework that has a sleek layout and works on almost any website.  Unfortunately though, it has rather a large footprint as it supports almost every HTML tag there is.</li>
+<li><em><a href="http://getskeleton.com/">Skeleton</a></em> is a tiny responsive boilerplate library for making very simplistic/minimalistic sites.  It is very tiny (only ~400 lines), however it is a bit bland for what we wanted to do with it.</li>
+<li><em>Custom Design</em> was the only way for us to go.  For such a simple website, we figured it couldn&rsquo;t be that hard.  <a href="http://codepen.io">Codepen.io</a> is a great source of such designs, provided you keep it Open Source and attribute the owner.</li>
+</ul>
+<p>So, we looked around, and we saw a nice simple design.  It wasn&rsquo;t anything special, but we wanted to get this project working in as short a time as possible.</p>
+ <p markdown="0" data-height="236" data-theme-id="0" data-slug-hash="xwDzB" data-default-tab="result" data-user="fluxus" class='codepen'>See the Pen <a href='http://codepen.io/fluxus/pen/xwDzB/'>Simple focus in/out input animation</a> by Mirko Zorić (<a href='http://codepen.io/fluxus'>@fluxus</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+<p>Implementation of Socket.IO into this design was nice and simple.  We simply hooked it up so that when the submit button was pressed, we sent off a <code>socket.emit</code> to our server.  We also made it so that when the client received data, it displayed it to them.</p>
+<p>Yet another neat little feature we added was the ability to see the number of URLs created in the time that the user had been there.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">function</span>() {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">socket</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">io</span>();
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span>;
+  <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;form&#34;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;submit&#34;</span>, <span style="color:#66d9ef">function</span>() {
+    <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#url&#34;</span>).<span style="color:#a6e22e">val</span>();
+    <span style="color:#a6e22e">generateShortlink</span>(<span style="color:#a6e22e">url</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+  });
+  <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#url&#34;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;paste&#34;</span>, <span style="color:#66d9ef">function</span>() {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+    <span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span>() { <span style="color:#75715e">// otherwise the value is blank
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">generateShortlink</span>(<span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">element</span>).<span style="color:#a6e22e">val</span>());
+    }, <span style="color:#ae81ff">0</span>);
+  });
+  <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;increment count&#34;</span>, <span style="color:#66d9ef">function</span>() {
+    <span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;
+    <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#count&#34;</span>).<span style="color:#a6e22e">html</span>(<span style="color:#a6e22e">count</span>);
+  });
+
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">generateShortlink</span>(<span style="color:#a6e22e">url</span>) {
+    <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#34;url&#34;</span>, <span style="color:#a6e22e">url</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">packet</span>) {
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">packet</span>.<span style="color:#a6e22e">status</span>) {
+        <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#count&#34;</span>).<span style="color:#a6e22e">html</span>(<span style="color:#a6e22e">count</span>);
+        <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#url&#34;</span>).<span style="color:#a6e22e">fadeOut</span>(<span style="color:#e6db74">&#34;fast&#34;</span>, <span style="color:#66d9ef">function</span>() {
+          <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#url&#34;</span>).<span style="color:#a6e22e">val</span>(<span style="color:#a6e22e">packet</span>.<span style="color:#a6e22e">shortlink</span>);
+          <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#url&#34;</span>).<span style="color:#a6e22e">fadeIn</span>(<span style="color:#e6db74">&#34;fast&#34;</span>);
+        });
+      } <span style="color:#66d9ef">else</span> {
+        <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;form&#34;</span>).<span style="color:#a6e22e">effect</span>(<span style="color:#e6db74">&#34;shake&#34;</span>);
+      }
+    });
+  }
+});
+</code></pre></div><h4 id="continuation"><strong>Continuation</strong><a href="#continuation" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Evidently, there is much to improve on a project we made in a single hour.  It&rsquo;s been two days, and so far we&rsquo;ve improved:</p>
+<ul>
+<li>Error Handling and URL Validation</li>
+<li>Creating our own Shortening Engine</li>
+<li>Statistics on Redirects</li>
+</ul>
+<p>You can see all the code <a href="http://github.com/subjectrefresh/shortener">here</a> and the actual site <a href="http://subr.pw">here</a>.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="/post/blogging-with-hugo-and-travis/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Blogging with Hugo &amp; Travis CI</span>
+            </a>
+        </span>
+        
+        
+    </div>
+</div>
+
+  
+
+  
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>© Codefined 2020</span>
+    
+            <span>:: <a href="https://github.com/popey456963">GitHub</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
