@@ -13,4 +13,4 @@ Minimal design is the name given to a monorepo of websites that all share the sa
 - Webpages should be mobile repsonsive
 - Creating a webpage should only take a few minutes
 
-I was in a phase where I created a large number of small tools which usually only required user authentication to save data between visits.
+I was in a phase where I created a large number of small tools which usually only required user authentication to save data between visits, thus we had a single repository with a variety of 'administrative functionality', separated from a folder of 'sites'.  A site was just a class that received a web server and responded to certain requests.
